@@ -1,0 +1,24 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "An app that lets you enter, view, update, and delete employee info",
+  "main": "employee.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RichardKessler/Employee-Tracker.git"
+  },
+  "author": "Richard Kessler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RichardKessler/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/RichardKessler/Employee-Tracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^7.1.0",
+    "mysql": "^2.18.1"
+  }
+}
