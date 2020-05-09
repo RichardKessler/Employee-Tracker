@@ -30,14 +30,14 @@ const userInput = async () => {
         type: 'list',
         name: 'choice',
         message: 'What would you like to do?',
-        choices: ['View All Employees', 'View All Employees by Department', 'View All Employees by Role', 'Add Employee', 'Delete Employee', 'Update Employee Role', 'Add Department', 'Add Role', 'Exit']
+        choices: ['View All Employees', 'View All Departments', 'View All Employees by Role', 'Add Employee', 'Delete Employee', 'Update Employee Role', 'Add Department', 'Add Role', 'Exit']
     })
     .then((answer) => {
         switch (answer.choice) {
             case 'View All Employees':
                 viewAll();
                 break;
-            case 'View All Employees by Department':
+            case 'View All Departments':
                 departmentTable();
                 break;
             case 'View All Employees by Role':
@@ -71,4 +71,24 @@ const viewAll = async () => {
         console.table(res);
         userInput();
     });
+}
+
+const departmentTable = async () => {
+    connection.query('SELECT * FROM department', (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        userInput();
+    });
+}
+
+const roleTable = async () => {
+    connection.query('SELECT * FROM role', (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        userInput();
+    });
+}
+
+const addEmployee = async () => {
+    connection.query('SELECT * FROM ')
 }
