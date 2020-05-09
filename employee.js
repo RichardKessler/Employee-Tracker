@@ -2,15 +2,12 @@ const inquirer = require('inquirer');
 const mysql = require('mysql');
 const cTable = require('console.table');
 
-const mysql = require('mysql');
-const inquirer = require('inquirer');
-
 const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
     password: "jidmenosta",
-    database: "top_songsdb"
+    database: "company_db"
 });
 
 connection.connect((err) => {
@@ -20,7 +17,7 @@ connection.connect((err) => {
 });
 
 const start = async () => {
-    displayLogo();
+    // displayLogo();
     userInput();
 };
 
