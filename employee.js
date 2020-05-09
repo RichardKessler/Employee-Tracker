@@ -19,12 +19,12 @@ connection.connect((err) => {
     start();
 });
 
-const start = () => {
+const start = async () => {
     displayLogo();
     userInput();
 };
 
-const userInput = () => {
+const userInput = async () => {
     inquirer
     .prompt ({
         type: 'list',
@@ -65,3 +65,10 @@ const userInput = () => {
     });
 }
 
+const viewAll = async () => {
+    connection.query('SELECT * FROM employee', (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        userInput();
+    });
+}
