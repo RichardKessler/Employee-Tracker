@@ -27,7 +27,7 @@ const userInput = async () => {
         type: 'list',
         name: 'choice',
         message: 'What would you like to do?',
-        choices: ['View All Employees', 'View All Departments', 'View All Roles', 'View All Employees by Role', 'Add Employee', 'Delete Employee', 'Update Employee Role', 'Add Department', 'Add Role', 'Exit']
+        choices: ['View All Employees', 'View All Departments', 'View All Roles', 'View All Employees by Role', 'Add Employee', 'Delete Employee', 'Update Employee Role', 'Add Department', 'Add Role', 'Delete Role', 'Exit']
     })
     .then((answer) => {
         switch (answer.choice) {
@@ -57,6 +57,9 @@ const userInput = async () => {
                 break;
             case 'Add Role':
                 addRole();
+                break;
+            case 'Delete Role':
+                deleteRole();
                 break;
             case 'Exit':
                 connection.end();
@@ -228,11 +231,72 @@ const addDepartment = async () => {
 }
 
 const addRole = async () => {
+    connection.query('SELECT * FROM department', (err, res) => {
+        if (err) throw err;
+        inquirer.prompt([{
+            name: 'id',
+            message: 'What is the ID for the new role?'            
+        },
+        {
+            name: 'title',
+            message: 'What is the title for the new role?'
+        },
+        {
+            name: 'salary',
+            message: 'What is the salary for the new role?'
+        },
+        {
+            type: 'list',
+            name: 'depID',
+            message: 'What is the department ID for the new role?',
+            choices: () => {
+                let choiceArray = [];
+                for (let i = 0; i < res.length; i++){
+                    choiceArray.push(res[i].id);
+                }
+                return choiceArray;
+            },
+        }
+    ])
+    .then((answer) => {
+        connection.query(`INSERT INTO role SET ?`, {
+            id: answer.id,
+            title: answer.title,
+            salary: answer.salary,
+            department_id: answer.depID
+        }, (err) => {
+            if (err) throw err;
+            console.log('Role Added Successfully!!');
+            userInput();
+        });
+    });
+    });
+
+}
+
+const deleteRole = async () => {
     connection.query('SELECT * FROM role', (err, res) => {
         if (err) throw err;
         inquirer.prompt([{
-
-        }])
-    })
-
+            type: 'list',
+            name: 'role',
+            message: 'What role would you like to delete?',
+            choices: () => {
+                let choiceArray = [];
+                for (let i = 0; i < res.length; i++){
+                    choiceArray.push(res[i].title);
+                }
+                return choiceArray;
+            },
+        }
+    ])
+    .then((answer) => {
+       let title = answer.role
+        connection.query(`DELETE FROM role WHERE title = "${title}"`, (err) => {
+            if (err) throw err;
+            console.log('Role Deleted Successfully!');
+            userInput();
+        });
+    });
+    });
 }
