@@ -27,7 +27,7 @@ const userInput = async () => {
         type: 'list',
         name: 'choice',
         message: 'What would you like to do?',
-        choices: ['View All Employees', 'View All Departments', 'View All Roles', 'View All Employees by Role', 'Add Employee', 'Delete Employee', 'Update Employee Role', 'Add Department', 'Add Role', 'Delete Role', 'Exit']
+        choices: ['View All Employees', 'View All Departments', 'View All Roles', 'View All Employees by Role', 'Add Employee', 'Delete Employee', 'Update Employee Role', 'Add Department', 'Add Role', 'Delete Role', 'Delete Department', 'Exit']
     })
     .then((answer) => {
         switch (answer.choice) {
@@ -60,6 +60,9 @@ const userInput = async () => {
                 break;
             case 'Delete Role':
                 deleteRole();
+                break;
+            case'Delete Department':
+                deleteDepartment();
                 break;
             case 'Exit':
                 connection.end();
@@ -298,5 +301,31 @@ const deleteRole = async () => {
             userInput();
         });
     });
+    });
+}
+
+const deleteDepartment = async () => {
+    connection.query('SELECT * FROM department', (err, res) => {
+        if (err) throw err;
+        inquirer.prompt([{
+            type: 'list',
+            name: 'department',
+            message: 'What department would you like to delete?',
+            choices: () => {
+                let choiceArray = [];
+                for (let i = 0; i < res.length; i++){
+                    choiceArray.push(res[i].name);
+                }
+                return choiceArray;
+            },
+        }])
+        .then((answer) => {
+            let depName = answer.department;
+            connection.query(`DELETE FROM department WHERE name = "${depName}"`, (err) => {
+                if (err) throw err;
+                console.log('Department Deleted!!');
+                userInput();
+            });
+        });
     });
 }
