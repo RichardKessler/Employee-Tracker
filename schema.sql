@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS company_db;
+
 CREATE database company_db;
 
 USE company_db;
@@ -24,5 +26,3 @@ CREATE TABLE employee (
     manager_id INT NULL,
     PRIMARY KEY (id)
 );
-
-INSERT INTO department ()

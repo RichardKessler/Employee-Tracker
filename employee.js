@@ -17,7 +17,7 @@ connection.connect((err) => {
 });
 
 const start = async () => {
-    // displayLogo();
+    displayLogo();
     userInput();
 };
 
@@ -43,6 +43,9 @@ const userInput = async () => {
             case 'View All Employees by Role':
                 roleTable();
                 break;
+            // case 'View All Employees by Manager':
+            //     viewByManager();
+            //     break;
             case 'Add Employee':
                 addEmployee();
                 break;
@@ -72,8 +75,9 @@ const userInput = async () => {
 }
 
 const viewAll = async () => {
-    connection.query('SELECT * FROM employee', (err, res) => {
+    connection.query('SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name FROM employee INNER JOIN role ON role_id = role.id INNER JOIN department ON department.id = role.department_id', (err, res) => {
         if (err) throw err;
+        // console.log(res.map(r => r.id));
         console.table(res);
         userInput();
     });
@@ -328,4 +332,40 @@ const deleteDepartment = async () => {
             });
         });
     });
+}
+
+// const viewByManager = async () => {
+//    connection.query('SELECT id, first_name, last_name FROM employee WHERE manager_id > 0', (err, res) => {
+//        if (err) throw err;
+//        console.table(res);
+//        userInput();
+//    });
+// }
+
+function displayLogo() {
+    {
+        console.log(' _____________________________________________________________________________ ');
+        console.log('|                                                                             |');
+        console.log('|  8888888888                        888                                      |');
+        console.log('|  888                               888                                      |');
+        console.log('|  888                               888                                      |');
+        console.log('|  8888888    88888b.d88b.  88888b.  888  .d88b.  888  888  .d88b.   .d88b.   |');
+        console.log('|  888        888 "888 "88b 888 "88b 888 d88""88b 888  888 d8P  Y8b d8P  Y8b  |');
+        console.log('|  888        888  888  888 888  888 888 888  888 888  888 88888888 88888888  |');
+        console.log('|  888        888  888  888 888 d88P 888 Y88..88P Y88b 888 Y8b.     Y8b.      |');
+        console.log('|  8888888888 888  888  888 88888P"  888  "Y88P"   "Y88888  "Y8888   "Y8888   |');
+        console.log('|                           888                        888                    |');
+        console.log('|                           888                   Y8b d88P                    |');
+        console.log('|                           888                    "Y88P"                     |');
+        console.log('|  8888888b.           888             888                                    |');
+        console.log('|  888  "Y88b          888             888                                    |');
+        console.log('|  888    888          888             888                                    |');
+        console.log('|  888    888  8888b.  888888  8888b.  88888b.   8888b.  .d8888b   .d88b.     |');
+        console.log('|  888    888     "88b 888        "88b 888 "88b     "88b 88K      d8P  Y8b    |');
+        console.log('|  888    888 .d888888 888    .d888888 888  888 .d888888 "Y8888b. 88888888    |');
+        console.log('|  888  .d88P 888  888 Y88b.  888  888 888 d88P 888  888      X88 Y8b.        |');
+        console.log('|  8888888P"  "Y888888  "Y888 "Y888888 88888P"  "Y888888  88888P"  "Y8888     |');
+        console.log('|_____________________________________________________________________________|');
+        console.log('');
+    }
 }
