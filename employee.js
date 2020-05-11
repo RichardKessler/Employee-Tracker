@@ -87,5 +87,21 @@ const roleTable = async () => {
 }
 
 const addEmployee = async () => {
+    
+}
+
+const deleteEmployee = async () => {
     connection.query('SELECT * FROM ')
+}
+
+const updateRole = async () => {
+    connection.query('SELECT * FROM ')
+}
+
+const addDepartment = async () => {
+    
+}
+
+const addRole = async () => {
+
 }
