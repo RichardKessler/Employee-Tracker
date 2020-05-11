@@ -206,10 +206,33 @@ const updateRole = async () => {
 }
 
 const addDepartment = async () => {
-    inquirer.prompt([{}])
-    
+    inquirer.prompt([{
+        name: 'id',
+        message: 'What is the ID for the new department?'
+    },
+    {
+        name: 'name',
+        message: 'What is the new department called?'
+    }
+    ])
+    .then((answer) => {
+        connection.query(`INSERT INTO department SET ?`, {
+        id: answer.id,
+        name: answer.name
+        }, (err) => {
+            if (err) throw err;
+            console.log('New Department Added Successfully!!');
+            userInput();
+        });
+    });
 }
 
 const addRole = async () => {
+    connection.query('SELECT * FROM role', (err, res) => {
+        if (err) throw err;
+        inquirer.prompt([{
+
+        }])
+    })
 
 }
