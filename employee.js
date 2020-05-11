@@ -79,7 +79,7 @@ const departmentTable = async () => {
 }
 
 const roleTable = async () => {
-    connection.query('SELECT * FROM role', (err, res) => {
+    connection.query('SELECT * FROM role RIGHT JOIN employee ON role.id = role_id', (err, res) => {
         if (err) throw err;
         console.table(res);
         userInput();
