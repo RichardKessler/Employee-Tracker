@@ -39,3 +39,14 @@ This application allows buisness owners to add, view,, update, and delete employ
 
 
 ## Built With
+
+* Node.js
+* MySQL Workbench
+* [MySQL](https://www.npmjs.com/package/mysql)
+* [Inquirer](https://www.npmjs.com/package/inquirer)
+* [Console.Table](https://www.npmjs.com/package/console.table)
+* ES6
+* Visual Studio Code
+
+## License
+
