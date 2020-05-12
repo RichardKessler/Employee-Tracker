@@ -11,6 +11,7 @@ An app that lets you enter, view, update, and delete employee info
 * [User Story](#User-Story)
 * [Usage](#Usage)
 * [Description](#Description)
+* [Demo](#Demo)
 * [Built With](#Built-With)
 * [License](#License)
 * [Credits](#Credits)
@@ -30,3 +31,11 @@ To use this application you can go to: https://github.com/RichardKessler/Employe
 
 ## Description
 
+This application allows buisness owners to add, view,, update, and delete employees, roles, and departments from their companies database.  Everything is run on a CLI and is easy to navigate the menues.  You can view all employees, departments, and roles which will tell you what employees belong to which department and role.  You can add new employees, departments, and roles as you hire more staff and add job listings as needed.  You can also delete anything that has been added with ease!
+
+## Demo
+
+
+
+
+## Built With
