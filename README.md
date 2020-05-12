@@ -50,3 +50,12 @@ This application allows buisness owners to add, view,, update, and delete employ
 
 ## License
 
+MIT
+
+## Credits
+
+* Eddie Saunders - for Logo Logs!'
+
+## Author
+
+* Richard Kessler - Full Stack Developer
