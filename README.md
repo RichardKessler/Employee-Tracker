@@ -2,6 +2,7 @@
 [![GitHub Repo](https://img.shields.io/github/repo-size/RichardKessler/Employee-Tracker?color=Green&style=plastic)](https://github.com/RichardKessler/Employee-Tracker)
 [![Main Repo Language](https://img.shields.io/github/languages/top/RichardKEssler/employee-tracker?color=blueviolet&style=plastic)](https://github.com/RichardKessler/Employee-Tracker)
 [![Repo Languages](https://img.shields.io/github/languages/count/RichardKessler/employee-tracker?color=red&style=plastic)](https://github.com/RichardKessler/Employee-Tracker)
+[![License](https://img.shields.io/github/license/richardkessler/employee-tracker?color=orange&style=plastic)](https://github.com/RichardKessler/Employee-Tracker)
 ```
 An app that lets you enter, view, update, and delete employee info
 ```
