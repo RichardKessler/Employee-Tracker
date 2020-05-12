@@ -36,7 +36,7 @@ This application allows buisness owners to add, view,, update, and delete employ
 
 ## Demo
 
-![Alt Text](https://gph.is/g/aNg3KXq)
+![Alt Text](https://giphy.com/gifs/QVI5WJuyuAC2d4JLHF/html5)
 
 
 ## Built With
